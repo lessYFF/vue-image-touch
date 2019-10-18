@@ -1,2 +1,1 @@
-# vue-mobile-swiper
-mobile swiper rely vue
+# vue-image-touch

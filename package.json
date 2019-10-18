@@ -1,16 +1,16 @@
 {
-  "name": "vue-mobile-swiper",
+  "name": "vue-image-touch",
   "version": "0.0.0",
-  "description": "mobile swiper rely vue",
+  "description": "touch image of a modal on mobile",
   "author": "Bruce yan",
   "homepage": "",
   "license": "MIT",
   "main": "index.ts",
   "keywords": [
     "vue",
-    "swiper",
+    "touch",
     "mobile",
-    "scale"
+    "image"
   ],
   "scripts": {
     "test": " && exit 1"
@@ -29,7 +29,8 @@
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "vue-property-decorator": "^8.3.0"
   },
   "lint-staged": {
     "*.{js,json,ts,css,md,vue,react}": [

@@ -2,6 +2,6 @@
 
 const vueMobileSwiper = require('..');
 
-describe('vue-mobile-swiper', () => {
+describe('vue-image-touch', () => {
     it('needs tests');
 });
