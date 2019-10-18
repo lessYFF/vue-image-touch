@@ -1,0 +1,51 @@
+{
+  "name": "vue-mobile-swiper",
+  "version": "0.0.0",
+  "description": "mobile swiper rely vue",
+  "author": "Bruce yan",
+  "homepage": "",
+  "license": "MIT",
+  "main": "index.ts",
+  "keywords": [
+    "vue",
+    "swiper",
+    "mobile",
+    "scale"
+  ],
+  "scripts": {
+    "test": " && exit 1"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.8",
+    "git-tslint": "^1.0.5",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.3"
+  },
+  "lint-staged": {
+    "*.{js,json,ts,css,md,vue,react}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
