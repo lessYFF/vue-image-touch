@@ -1,18 +1,20 @@
 {
   "name": "vue-image-touch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "touch image of a modal on mobile",
   "author": "Bruce yan",
   "homepage": "",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "lib/index.js",
   "keywords": [
     "vue",
     "touch",
-    "mobile",
-    "image"
+    "image",
+    "mobile"
   ],
   "scripts": {
+    "start": "parcel example/index.html --open",
+    "build": "parcel build src/index.ts -d ./lib",
     "test": " && exit 1"
   },
   "directories": {
@@ -22,15 +24,23 @@
   "files": [
     "lib"
   ],
+  "dependencies": {
+    "vue-touch": "^2.0.0-beta.4"
+},
   "devDependencies": {
     "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.8",
+    "@vue/component-compiler-utils": "^3.0.0",
     "git-tslint": "^1.0.5",
     "jest": "^24.9.0",
+    "less": "^3.10.3",
+    "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3",
-    "vue-property-decorator": "^8.3.0"
+    "vue": "^2.6.10",
+    "vue-property-decorator": "^8.3.0",
+    "vue-template-compiler": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.4"
   },
   "lint-staged": {
     "*.{js,json,ts,css,md,vue,react}": [

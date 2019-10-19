@@ -7,35 +7,35 @@
         @pinchmove = "pinchMove"
         @swipeleft="swipeLeft"
         @swiperight="swipeRight">
-        <div class="touch-image"
+        <div class="image-touch"
             :class="[isShow ? 'zoomIn' : 'zoomOut']"
-            @click.stop="handleClose">
+            @click.stop="hidden">
             <!-- 蒙层展示 -->
-            <div class="touch-image-hd">
-                <div class="touch-image-hd__mask"
+            <div class="image-touch-hd">
+                <div class="image-touch-hd__mask"
                     :style="{'background-color': bgColor }"
                     @touchmove.prevent.stop />
             </div>
             <!-- 图片展示 -->
-            <div class="touch-image_bd"
+            <div class="image-touch_bd"
                 :style="{
                     transition,
                     width: `${touchWrapWidth}px`,
                     left: `${touchWrapLeft}px`,
                 }">
-                <div class="touch-image_bd__wrap"
+                <div class="image-touch_bd__wrap"
                     :style="{ width: `${pageWidth}px`}"
-                    v-for="(item, index) of imgList">
-                    <img class="touch-image_bd__img"
+                    v-for="(item, index) of imageList">
+                    <img class="image-touch_bd__img"
                         :style="{ transform: `scale(${ pinList[index] || 1})` }"
                         :src="item" alt="touch image"/>
                 </div>
             </div>
             <!-- 进度展示 -->
-            <div class="touch-image_ft" v-if="isShowBar">
-                <span class="touch-image_ft__sub"
-                    :class="{'touch-image_ft__sub-actived': index === activedSub }"
-                    v-for="(item,index) of imgList">
+            <div class="image-touch_ft" v-if="isShowBar">
+                <span class="image-touch_ft__sub"
+                    :class="{'image-touch_ft__sub-actived': index === activedSub }"
+                    v-for="(item,index) of imageList">
                 </span>
             </div>
         </div>
@@ -48,14 +48,19 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 Vue.use(vueTouch, { name: 'v-touch' });
 @Component
-export default class TouchImage extends Vue {
+export default class ImageTouch extends Vue {
     @Prop() // 图片数据源
-    public imgList: Array<any>;
+    public imageList: Array<any>;
 
     @Prop({ // 是否显示进度条
         default: true,
     })
     public isShowBar: boolean;
+
+    @Prop({ // 选中目标
+        default: 0,
+    })
+    public activedIndex: number;
 
     @Prop({ // 图片弹层背景
         default: '#000',
@@ -87,12 +92,7 @@ export default class TouchImage extends Vue {
     }
 
     get touchWrapWidth() {    // 预览左偏移距离
-        return (this.pageWidth * this.imgList.length);
-    }
-
-    created() {
-        this.$on('openTouchImage', this.show);
-        this.$on('closeTouchImage', this.hidden);
+        return (this.pageWidth * this.imageList.length);
     }
 
     hidden() {  // 关闭预览
@@ -100,19 +100,12 @@ export default class TouchImage extends Vue {
     }
 
     show(args) { // 打开预览
-        if (this.unionId === args[0]) {
-            this.activedSub = args[1];
-            this.isShow = true;
-            this.reset();
-        }
-    }
-
-    handleClose() {
-        this.$emit('closeTouchImage');
+        this.isShow = true;
+        this.reset();
     }
 
     swipeLeft() { // 左滑
-        const max = this.imgList.length - 1;
+        const max = this.imageList.length - 1;
 
         this.activedSub = this.activedSub === max ? max : ++this.activedSub;
         this.touchWrapLeft = - (this.pageWidth * this.activedSub);
@@ -156,15 +149,16 @@ export default class TouchImage extends Vue {
         }
     }
 
-    reset() { // 重置图片位置和大小
+    reset() { // 重置图片位置、进度和尺寸
         this.pinList = [];
-        this.touchWrapLeft = - (this.pageWidth * this.activedSub);
+        this.activedSub = this.activedIndex;
+        this.touchWrapLeft = - (this.pageWidth * this.activedIndex);
     }
 }
 </script>
 
 <style scoped>
-    .touch-image {
+    .image-touch {
         position: absolute;
         top: 0;
         left: 0;
@@ -172,7 +166,7 @@ export default class TouchImage extends Vue {
         height: 100%;
         transform-origin: center;
     }
-    .touch-image-hd__mask {
+    .image-touch-hd__mask {
         position: fixed;
         top: 0;
         left: 0;
@@ -181,7 +175,7 @@ export default class TouchImage extends Vue {
         z-index: 1000;
         background-color: #000;
     }
-    .touch-image_bd {
+    .image-touch_bd {
         position: fixed;
         top: 50%;
         z-index: 1001;
@@ -192,7 +186,7 @@ export default class TouchImage extends Vue {
         transform: translateY(-50%);
         transition: left .3s ease;
     }
-    .touch-image_bd__wrap {
+    .image-touch_bd__wrap {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -201,7 +195,7 @@ export default class TouchImage extends Vue {
         margin-right: 10px;
     }
 
-    .touch-image_ft {
+    .image-touch_ft {
         position: fixed;
         bottom: 15px;
         z-index: 1001;
@@ -210,7 +204,7 @@ export default class TouchImage extends Vue {
         align-items: center;
         width: 100%;
     }
-    .touch-image_ft__sub {
+    .image-touch_ft__sub {
         width: 8px;
         height: 4px;
         border-radius: 8px;
@@ -218,7 +212,7 @@ export default class TouchImage extends Vue {
         background-color: rgba(255, 255, 255, .3);
     }
 
-    .touch-image_ft__sub.touch-image_ft__sub-actived {
+    .image-touch_ft__sub.image-touch_ft__sub-actived {
         width: 12px;
         background-color: rgba(255, 255, 255, 1);
     }
