@@ -1,67 +1,69 @@
 {
-  "name": "vue-image-touch",
-  "version": "0.0.1",
-  "description": "touch image of a modal on mobile",
-  "author": "Bruce yan",
-  "homepage": "",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "keywords": [
-    "vue",
-    "image",
-    "mobile",
-    "swipe",
-    "scale",
-    "drag"
-  ],
-  "scripts": {
-    "start": "parcel example/index.html --open",
-    "build": "parcel build src/index.ts -d ./lib",
-    "test": " && exit 1"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib/*",
-    "LICENSE",
-    "README.md",
-    "package.json"
-  ],
-  "dependencies": {
-    "vue-touch": "^2.0.0-beta.4"
+    "name": "vue-image-touch",
+    "version": "0.0.1",
+    "description": "touch image of a modal on mobile",
+    "author": "Bruce yan",
+    "homepage": "",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "keywords": [
+        "vue",
+        "image",
+        "mobile",
+        "swipe",
+        "scale",
+        "drag"
+    ],
+    "scripts": {
+        "start": "parcel example/index.html --open",
+        "build": "parcel build src/index.ts -d ./lib",
+        "test": " jest"
     },
-  "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "@vue/component-compiler-utils": "^3.0.0",
-    "git-tslint": "^1.0.5",
-    "jest": "^24.9.0",
-    "less": "^3.10.3",
-    "parcel-bundler": "^1.12.4",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^24.1.0",
-    "typescript": "^3.6.3",
-    "vue": "^2.6.10",
-    "vue-property-decorator": "^8.3.0",
-    "vue-template-compiler": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.4"
-  },
-  "lint-staged": {
-    "*.{js,json,ts,css,md,vue,react}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+    "directories": {
+        "lib": "lib",
+        "test": "__tests__"
+    },
+    "files": [
+        "lib/*",
+        "LICENSE",
+        "README.md",
+        "package.json"
+    ],
+    "dependencies": {
+        "vue-touch": "^2.0.0-beta.4"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.18",
+        "@vue/component-compiler-utils": "^3.0.0",
+        "@vue/test-utils": "^1.0.0-beta.29",
+        "git-tslint": "^1.0.5",
+        "jest": "^24.9.0",
+        "jest-vue-preprocessor": "^1.7.0",
+        "less": "^3.10.3",
+        "parcel-bundler": "^1.12.4",
+        "rimraf": "^3.0.0",
+        "ts-jest": "^24.1.0",
+        "typescript": "^3.6.3",
+        "vue": "^2.6.10",
+        "vue-hot-reload-api": "^2.3.4",
+        "vue-property-decorator": "^8.3.0",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "lint-staged": {
+        "*.{js,json,ts,css,md,vue,react}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "commit-msg": "commitlint -e $GIT_PARAMS"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
     }
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  }
 }
