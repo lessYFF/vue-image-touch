@@ -3,7 +3,6 @@
     {{name}}
     <div class="image-list">
         <div class="image-item"
-
             @click="openImageTouch(index)"
             :key="index"
             v-for="(item, index) of imgList">

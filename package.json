@@ -8,9 +8,11 @@
   "main": "lib/index.js",
   "keywords": [
     "vue",
-    "touch",
     "image",
-    "mobile"
+    "mobile",
+    "swipe",
+    "scale",
+    "drag"
   ],
   "scripts": {
     "start": "parcel example/index.html --open",
@@ -22,11 +24,14 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib/*",
+    "LICENSE",
+    "README.md",
+    "package.json"
   ],
   "dependencies": {
     "vue-touch": "^2.0.0-beta.4"
-},
+    },
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@vue/component-compiler-utils": "^3.0.0",

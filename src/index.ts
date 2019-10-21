@@ -14,7 +14,7 @@ const ImageTouch = {
 
         const initInstance = () => {
             imageTouchInstance = new imageTouchContructor();
-            console.log('imageTouchInstance', imageTouchInstance);
+
             const dom = imageTouchInstance.$mount().$el;
             document.body.appendChild(dom) // 将dom插入body
         }
