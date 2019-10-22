@@ -15,8 +15,8 @@
         "drag"
     ],
     "scripts": {
-        "start": "parcel example/index.html --open",
-        "build": "parcel build src/index.ts -d ./lib",
+        "start": "NODE_ENV=dev webpack-dev-server --mode development example/index.ts --open",
+        "build": "webpack --mode production src/index.ts --output lib/index.js",
         "test": " jest"
     },
     "directories": {
@@ -33,21 +33,32 @@
         "vue-touch": "^2.0.0-beta.4"
     },
     "devDependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/preset-env": "^7.6.3",
         "@types/jest": "^24.0.18",
         "@vue/component-compiler-utils": "^3.0.0",
         "@vue/test-utils": "^1.0.0-beta.29",
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.2.0",
         "git-tslint": "^1.0.5",
+        "html-webpack-plugin": "^3.2.0",
         "jest": "^24.9.0",
-        "jest-vue-preprocessor": "^1.7.0",
         "less": "^3.10.3",
-        "parcel-bundler": "^1.12.4",
+        "less-loader": "^5.0.0",
         "rimraf": "^3.0.0",
         "ts-jest": "^24.1.0",
+        "ts-loader": "^6.2.0",
         "typescript": "^3.6.3",
         "vue": "^2.6.10",
         "vue-hot-reload-api": "^2.3.4",
+        "vue-loader": "^15.7.1",
         "vue-property-decorator": "^8.3.0",
-        "vue-template-compiler": "^2.6.10"
+        "vue-style-loader": "^4.1.2",
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.9",
+        "webpack-dev-server": "^3.8.2"
     },
     "lint-staged": {
         "*.{js,json,ts,css,md,vue,react}": [
