@@ -1,9 +1,8 @@
-import { mount } from '@vue/test-utils'
-import imageTouch from '../src/image-touch.vue'
+const imageTouch = require('../lib/index.js')
 
-describe('Component', () => {
-    test('is a Vue instance', () => {
-        const wrapper = mount(imageTouch)
-        expect(wrapper.isVueInstance()).toBeTruthy()
+console.log('imageTouch', imageTouch)
+describe('Vue Plugin', () => {
+    test('is a Vue plugin', () => {
+        expect('install' in imageTouch).toBeTruthy()
     })
 })

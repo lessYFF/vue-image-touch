@@ -1,6 +1,6 @@
 {
     "name": "vue-image-touch",
-    "version": "1.0.1",
+    "version": "1.0.7",
     "description": "touch image of a modal on mobile",
     "author": "Bruce yan",
     "homepage": "",
@@ -15,8 +15,8 @@
         "drag"
     ],
     "scripts": {
-        "start": "parcel example/index.html --open",
-        "build": "parcel build src/index.ts -d ./lib",
+        "start": "NODE_ENV=dev rollup -cw",
+        "build": "rollup -c",
         "test": " jest"
     },
     "directories": {
@@ -27,6 +27,7 @@
         "lib/*",
         "LICENSE",
         "README.md",
+        "types.ts",
         "package.json"
     ],
     "dependencies": {
@@ -40,9 +41,18 @@
         "jest": "^24.9.0",
         "jest-vue-preprocessor": "^1.7.0",
         "less": "^3.10.3",
-        "parcel-bundler": "^1.12.4",
         "rimraf": "^3.0.0",
+        "rollup": "^1.25.2",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-livereload": "^1.0.4",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-serve": "^1.0.1",
+        "rollup-plugin-terser": "^5.1.2",
+        "rollup-plugin-typescript": "^1.0.1",
+        "rollup-plugin-uglify": "^6.0.3",
+        "rollup-plugin-vue": "^5.0.1",
         "ts-jest": "^24.1.0",
+        "tslib": "^1.10.0",
         "typescript": "^3.6.3",
         "vue": "^2.6.10",
         "vue-hot-reload-api": "^2.3.4",
