@@ -1,9 +1,20 @@
+const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'dev' ? true : false
 const webpackConfig = {
     stats: 'errors-only',
+    output: {
+        filename: 'index.js',
+        chunkFilename: '[name][hash].js',
+        umdNamedDefine: true,
+        libraryTarget: 'umd',
+        libraryExport: 'default',
+        path: path.resolve(__dirname, './lib'),
+        globalObject: 'this',
+    },
     module: {
         rules: [
             {
@@ -26,6 +37,7 @@ const webpackConfig = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new CleanWebpackPlugin(),
         isDev
             ? new HtmlWebpackPlugin({
                   template: './example/index.html',
@@ -33,18 +45,6 @@ const webpackConfig = {
               })
             : () => {},
     ],
-    optimization: {
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\\/]node_modules[\\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
-        },
-    },
 }
 
 module.exports = webpackConfig
