@@ -5,15 +5,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'dev' ? true : false
 const webpackConfig = {
+    devtool: 'source-map',
     stats: 'errors-only',
     output: {
         filename: 'index.js',
-        chunkFilename: '[name][hash].js',
-        umdNamedDefine: true,
         libraryTarget: 'umd',
         libraryExport: 'default',
         path: path.resolve(__dirname, './lib'),
-        globalObject: 'this',
     },
     module: {
         rules: [
@@ -45,6 +43,7 @@ const webpackConfig = {
               })
             : () => {},
     ],
+    externals: 'vue',
 }
 
 module.exports = webpackConfig
