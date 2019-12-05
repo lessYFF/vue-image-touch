@@ -43,7 +43,7 @@ const webpackConfig = {
               })
             : () => {},
     ],
-    externals: 'vue',
+    externals: isDev ? '' : 'vue',
 }
 
 module.exports = webpackConfig
