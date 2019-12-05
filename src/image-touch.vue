@@ -216,7 +216,9 @@ export default class ImageTouch extends Vue {
     overflow: hidden;
     margin-right: 10px;
 }
-
+.image-touch_bd__img {
+    max-width: 100%;
+}
 .image-touch_ft {
     position: fixed;
     bottom: 15px;
